@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover"
+    />
+    <title>Game Room - Modern Arcade Experience</title>
+    <meta
+      name="description"
+      content="Experience classic arcade games reimagined with modern web technologies."
+    />
+
+    <!-- Theme color for browser -->
+    <meta name="theme-color" content="#7e22ce" />
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Game Room - Modern Arcade Experience" />
+    <meta
+      property="og:description"
+      content="Experience classic arcade games reimagined with modern web technologies."
+    />
+    <meta property="og:image" content="src/assets/images/og-image.jpg" />
+    <meta property="og:url" content="https://gameroom.example.com" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Game Room - Modern Arcade Experience" />
+    <meta
+      name="twitter:description"
+      content="Experience classic arcade games reimagined with modern web technologies."
+    />
+    <meta name="twitter:image" content="src/assets/images/og-image.jpg" />
+
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="manifest.json" />
+
+    <!-- iOS support -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <meta name="apple-mobile-web-app-title" content="Game Room" />
+    <link rel="apple-touch-icon" href="src/assets/images/pacman.svg" />
+
+    <!-- PWA icons -->
+    <link rel="icon" href="src/assets/images/pacman.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="src/assets/images/pacman.svg" />
+    <link
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="src/assets/images/pacman.svg"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="src/assets/images/pacman.svg"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="167x167"
+      href="src/assets/images/pacman.svg"
+    />
+
+    <!-- PWA splash screens for iOS -->
+    <link
+      rel="apple-touch-startup-image"
+      href="src/assets/images/splash/apple-splash-2048-2732.png"
+      media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"
+    />
+    <link
+      rel="apple-touch-startup-image"
+      href="src/assets/images/splash/apple-splash-1668-2388.png"
+      media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"
+    />
+    <link
+      rel="apple-touch-startup-image"
+      href="src/assets/images/splash/apple-splash-1536-2048.png"
+      media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"
+    />
+    <link
+      rel="apple-touch-startup-image"
+      href="src/assets/images/splash/apple-splash-1125-2436.png"
+      media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"
+    />
+    <link
+      rel="apple-touch-startup-image"
+      href="src/assets/images/splash/apple-splash-1242-2688.png"
+      media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"
+    />
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="src/css/style.css" />
+    <link rel="stylesheet" href="src/css/components/theme-toggle.css" />
+    <link rel="stylesheet" href="src/css/components/pwa-install.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="src/assets/images/pacman.svg" type="image/svg+xml" />
+    <link
+      rel="shortcut icon"
+      href="src/assets/images/pacman.svg"
+      type="image/svg+xml"
+    />
+    <style>
+      /* Inline styles to immediately handle any potential UI issues */
+      .main-install-container {
+        display: none; /* Hide by default, will be shown by JS if needed */
+      }
+      header h1 {
+        opacity: 1 !important;
+      }
+      .header-controls {
+        position: relative;
+        z-index: 100; /* Ensure controls are always on top */
+      }
+      /* Inline critical CSS */
+      .main-install-container {
+        display: none; /* Hide by default until we know it's not installed */
+      }
+
+      /* Hide flash of unstyled content */
+      body {
+        visibility: hidden;
+      }
+      .no-js body {
+        visibility: visible;
+      }
+
+      /* Ensure install button is properly styled */
+      #main-install-btn {
+        z-index: 999;
+      }
+    </style>
+
+    <!-- Preload key resources -->
+    <link rel="preload" href="src/js/main.js" as="script" />
+    <link rel="preload" href="src/js/pwa-install.js" as="script" />
+    <link rel="preload" href="src/js/theme.js" as="script" />
+
+    <!-- No-JS fallback -->
+    <script>
+      document.documentElement.classList.remove("no-js");
+    </script>
+  </head>
+  <body class="transition-colors duration-300">
+    <!-- Preloader -->
+    <div class="preloader">
+      <span class="loader"></span>
+    </div>
+
+    <header>
+      <h1>🎮 Game Room</h1>
+      <div class="header-controls">
+        <button class="sound-toggle" aria-label="Toggle sound">
+          <i class="fas fa-volume-up"></i>
+        </button>
+        <button class="theme-toggle" aria-label="Toggle dark/light theme">
+          <i class="fas fa-moon"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Install Button - Prominent and Standalone -->
+    <div class="main-install-container">
+      <button id="main-install-btn" class="main-install-button">
+        <i class="fas fa-download"></i> Install Game Room App
+        <span class="install-subtext">Play all games offline!</span>
+      </button>
+    </div>
+
+    <div class="games-grid">
+      <div
+        class="game-card"
+        onclick="window.location.href='src/games/snake/index.html'"
+        style="--i: 0"
+      >
+        <div class="badge new">New</div>
+        <img
+          src="src/assets/images/snake.svg"
+          alt="Snake Game"
+          class="game-icon"
+        />
+        <h2 class="game-title">Snake</h2>
+        <p class="game-description">
+          Navigate your snake to collect food and grow longer without hitting
+          walls or yourself!
+        </p>
+        <div class="game-meta">
+          <span class="game-difficulty">Easy</span>
+          <span class="game-category">Arcade</span>
+        </div>
+        <button class="play-button">Play Now</button>
+      </div>
+
+      <div
+        class="game-card"
+        onclick="window.location.href='src/games/tetris/index.html'"
+        style="--i: 1"
+      >
+        <img
+          src="src/assets/images/tetris.svg"
+          alt="Tetris Game"
+          class="game-icon"
+        />
+        <h2 class="game-title">Tetris</h2>
+        <p class="game-description">
+          Stack falling blocks strategically to clear lines and achieve high
+          scores!
+        </p>
+        <div class="game-meta">
+          <span class="game-difficulty">Medium</span>
+          <span class="game-category">Puzzle</span>
+        </div>
+        <button class="play-button">Play Now</button>
+      </div>
+
+      <div
+        class="game-card"
+        onclick="window.location.href='src/games/tictactoe/index.html'"
+        style="--i: 2"
+      >
+        <img
+          src="src/assets/images/tictactoe.svg"
+          alt="Tic Tac Toe Game"
+          class="game-icon"
+        />
+        <h2 class="game-title">Tic Tac Toe</h2>
+        <p class="game-description">
+          Challenge an intelligent AI or play against friends in this strategic
+          game of X's and O's!
+        </p>
+        <div class="game-meta">
+          <span class="game-difficulty">Easy</span>
+          <span class="game-category">Strategy</span>
+        </div>
+        <button class="play-button">Play Now</button>
+      </div>
+
+      <div
+        class="game-card"
+        onclick="window.location.href='src/games/pac-man/index.html'"
+        style="--i: 3"
+      >
+        <img
+          src="src/assets/images/pacman.svg"
+          alt="Pac-Man Game"
+          class="game-icon"
+        />
+        <h2 class="game-title">Pac-Man</h2>
+        <p class="game-description">
+          Navigate through mazes, collect dots, and avoid ghosts in this arcade
+          classic!
+        </p>
+        <div class="game-meta">
+          <span class="game-difficulty">Medium</span>
+          <span class="game-category">Arcade</span>
+        </div>
+        <button class="play-button">Play Now</button>
+      </div>
+
+      <div
+        class="game-card"
+        onclick="window.location.href='src/games/memory match/index.html'"
+        style="--i: 4"
+      >
+        <div class="badge updated">Updated</div>
+        <img
+          src="src/assets/images/memory.svg"
+          alt="Memory Match Game"
+          class="game-icon"
+        />
+        <h2 class="game-title">Memory Match</h2>
+        <p class="game-description">
+          Test your memory skills by matching pairs of cards with beautiful
+          animations!
+        </p>
+        <div class="game-meta">
+          <span class="game-difficulty">Easy</span>
+          <span class="game-category">Puzzle</span>
+        </div>
+        <button class="play-button">Play Now</button>
+      </div>
+
+      <div
+        class="game-card"
+        onclick="window.location.href='src/games/space invaders/index.html'"
+        style="--i: 5"
+      >
+        <img
+          src="src/assets/images/spaceinvaders.svg"
+          alt="Space Invaders Game"
+          class="game-icon"
+        />
+        <h2 class="game-title">Space Invaders</h2>
+        <p class="game-description">
+          Defend Earth from alien invaders with powerful weapons and shield
+          upgrades!
+        </p>
+        <div class="game-meta">
+          <span class="game-difficulty">Hard</span>
+          <span class="game-category">Shooter</span>
+        </div>
+        <button class="play-button">Play Now</button>
+      </div>
+    </div>
+
+    <section class="features-section">
+      <h2>Game Room Features</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <i class="fas fa-trophy"></i>
+          <h3>High Scores</h3>
+          <p>Compete for the top spot on local and global leaderboards</p>
+        </div>
+        <div class="feature-card">
+          <i class="fas fa-mobile-alt"></i>
+          <h3>Mobile Ready</h3>
+          <p>Play your favorite games on any device with responsive design</p>
+        </div>
+        <div class="feature-card">
+          <i class="fas fa-moon"></i>
+          <h3>Dark Mode</h3>
+          <p>Enjoy gaming with reduced eye strain in low-light environments</p>
+        </div>
+        <div class="feature-card">
+          <i class="fas fa-download"></i>
+          <h3>Offline Play</h3>
+          <p>Install as a Progressive Web App for offline gaming</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Game Room</h3>
+          <p>
+            A modern collection of classic arcade games reimagined for today's
+            web.
+          </p>
+        </div>
+        <div class="footer-section">
+          <h3>Links</h3>
+          <ul>
+            <li><a href="#" id="privacy-link">Privacy Policy</a></li>
+            <li><a href="#" id="about-link">About</a></li>
+            <li>
+              <a href="https://github.com/Tyler1201623" target="_blank"
+                >GitHub</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Install App</h3>
+          <button id="install-btn" class="install-button">
+            <i class="fas fa-download"></i> Install App
+          </button>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2024 Game Room - Modern Arcade Experience</p>
+      </div>
+    </footer>
+
+    <!-- No JavaScript fallback -->
+    <noscript>
+      <div class="noscript-message">
+        <h2>JavaScript Required</h2>
+        <p>
+          This app requires JavaScript to run. Please enable JavaScript in your
+          browser settings and reload the page.
+        </p>
+      </div>
+    </noscript>
+
+    <!-- Scripts -->
+    <script src="src/js/theme.js"></script>
+    <script src="src/js/gameLoader.js"></script>
+    <script src="src/js/main.js"></script>
+    <script src="src/js/pwa-install.js"></script>
+
+    <!-- Register service worker -->
+    <script>
+      // Force display: block to ensure body is visible
+      document.body.style.visibility = "visible";
+
+      // Register service worker
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker
+            .register("/service-worker.js")
+            .then((reg) => console.log("Service worker registered:", reg.scope))
+            .catch((err) =>
+              console.error("Service worker registration failed:", err)
+            );
+        });
+      }
+    </script>
+  </body>
+</html>

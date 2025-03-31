@@ -1,0 +1,223 @@
+/* PWA Installation Prompt Styles */
+:root {
+  --pwa-shadow: 0 10px 20px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Main installation banner */
+.pwa-install-banner {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  max-width: 500px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 12px;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: var(--pwa-shadow);
+  z-index: 1000;
+  transform: translateY(150%);
+  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  opacity: 0;
+}
+
+.pwa-install-banner.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Dark mode styles */
+body.dark-mode .pwa-install-banner {
+  background: #2a2a2a;
+  border: 1px solid #3a3a3a;
+}
+
+.pwa-content {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.pwa-icon {
+  width: 48px;
+  height: 48px;
+  margin-right: 16px;
+  border-radius: 8px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.pwa-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pwa-info {
+  flex: 1;
+}
+
+.pwa-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 4px;
+}
+
+body.dark-mode .pwa-title {
+  color: #f8fafc;
+}
+
+.pwa-description {
+  font-size: 14px;
+  color: #64748b;
+  margin: 0;
+}
+
+body.dark-mode .pwa-description {
+  color: #94a3b8;
+}
+
+.pwa-buttons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: 16px;
+}
+
+.pwa-install-btn {
+  background: linear-gradient(
+    135deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pwa-install-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.pwa-install-btn:active {
+  transform: translateY(0);
+}
+
+.pwa-close-btn {
+  background: transparent;
+  border: none;
+  color: #64748b;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.pwa-close-btn:hover {
+  background: #f1f5f9;
+  color: #0f172a;
+}
+
+body.dark-mode .pwa-close-btn:hover {
+  background: #334155;
+  color: #f8fafc;
+}
+
+/* Animation keyframes */
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  40% {
+    transform: translateY(-20px) scale(1.05);
+  }
+  60% {
+    transform: translateY(-10px) scale(1.025);
+  }
+}
+
+/* Badge to indicate "installable" on game cards */
+.pwa-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: linear-gradient(
+    135deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 4px;
+  z-index: 1;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .pwa-install-banner {
+    bottom: 16px;
+    left: 16px;
+    right: 16px;
+    padding: 12px 16px;
+  }
+
+  .pwa-icon {
+    width: 40px;
+    height: 40px;
+    margin-right: 12px;
+  }
+
+  .pwa-title {
+    font-size: 15px;
+  }
+
+  .pwa-description {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .pwa-buttons {
+    margin-left: 8px;
+  }
+
+  .pwa-install-btn {
+    padding: 6px 12px;
+    font-size: 13px;
+  }
+
+  .pwa-info {
+    max-width: 150px;
+  }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .pwa-install-banner,
+  .pwa-install-btn,
+  .pwa-close-btn {
+    transition: none;
+  }
+}

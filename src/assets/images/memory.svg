@@ -1,0 +1,275 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <!-- Definitions -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f1f5f9" />
+      <stop offset="100%" stop-color="#e2e8f0" />
+    </linearGradient>
+    
+    <linearGradient id="cardGradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7e22ce" />
+      <stop offset="100%" stop-color="#a855f7" />
+    </linearGradient>
+    
+    <linearGradient id="cardGradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0ea5e9" />
+      <stop offset="100%" stop-color="#0284c7" />
+    </linearGradient>
+    
+    <linearGradient id="cardGradient3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f97316" />
+      <stop offset="100%" stop-color="#ea580c" />
+    </linearGradient>
+    
+    <linearGradient id="cardGradient4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981" />
+      <stop offset="100%" stop-color="#059669" />
+    </linearGradient>
+    
+    <linearGradient id="cardGradient5" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ef4444" />
+      <stop offset="100%" stop-color="#dc2626" />
+    </linearGradient>
+    
+    <linearGradient id="cardGradient6" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#facc15" />
+      <stop offset="100%" stop-color="#eab308" />
+    </linearGradient>
+    
+    <linearGradient id="cardBackGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#64748b" />
+      <stop offset="100%" stop-color="#475569" />
+    </linearGradient>
+    
+    <linearGradient id="matchedGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981" />
+      <stop offset="100%" stop-color="#059669" />
+    </linearGradient>
+    
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="8" />
+      <feOffset dx="0" dy="4" result="offsetblur" />
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.2" />
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+    
+    <filter id="cardShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="4" />
+      <feOffset dx="2" dy="2" result="offsetblur" />
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.3" />
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+    
+    <clipPath id="roundedRect">
+      <rect x="16" y="16" width="480" height="480" rx="64" ry="64" />
+    </clipPath>
+    
+    <!-- Card Back Pattern -->
+    <pattern id="cardBackPattern" patternUnits="userSpaceOnUse" width="50" height="50">
+      <rect width="50" height="50" fill="url(#cardBackGradient)" />
+      <circle cx="25" cy="25" r="15" fill="none" stroke="white" stroke-width="2" opacity="0.2" />
+      <path d="M12.5 12.5 L37.5 37.5 M37.5 12.5 L12.5 37.5" stroke="white" stroke-width="2" opacity="0.2" />
+    </pattern>
+    
+    <!-- Card symbols -->
+    <symbol id="star" viewBox="0 0 60 60">
+      <path d="M30 10 L35 25 L50 25 L40 35 L45 50 L30 40 L15 50 L20 35 L10 25 L25 25 Z" fill="white" />
+    </symbol>
+    
+    <symbol id="heart" viewBox="0 0 60 60">
+      <path d="M30 50 C28 48, 10 35, 10 20 C10 10, 25 5, 30 15 C35 5, 50 10, 50 20 C50 35, 32 48, 30 50 Z" fill="white" />
+    </symbol>
+    
+    <symbol id="diamond" viewBox="0 0 60 60">
+      <path d="M30 10 L50 30 L30 50 L10 30 Z" fill="white" />
+    </symbol>
+    
+    <symbol id="circle" viewBox="0 0 60 60">
+      <circle cx="30" cy="30" r="20" fill="white" />
+    </symbol>
+    
+    <symbol id="square" viewBox="0 0 60 60">
+      <rect x="15" y="15" width="30" height="30" fill="white" />
+    </symbol>
+    
+    <symbol id="triangle" viewBox="0 0 60 60">
+      <path d="M30 15 L45 45 L15 45 Z" fill="white" />
+    </symbol>
+  </defs>
+
+  <!-- Background with rounded corners -->
+  <rect x="16" y="16" width="480" height="480" rx="64" ry="64" fill="url(#bgGradient)" filter="url(#shadow)" />
+  
+  <!-- Game title -->
+  <g transform="translate(256, 50)">
+    <rect x="-160" y="-25" width="320" height="50" rx="12" ry="12" fill="white" opacity="0.9" />
+    <text x="0" y="10" font-family="Arial, sans-serif" font-size="28" font-weight="bold" text-anchor="middle" fill="#0f172a">MEMORY MATCH</text>
+  </g>
+  
+  <!-- Game board - Cards -->
+  <g transform="translate(106, 161)" filter="url(#shadow)">
+    <!-- First row -->
+    <!-- Card 1 (flipped - showing front) -->
+    <g transform="translate(0, 0)">
+      <rect x="-40" y="-50" width="80" height="100" rx="8" ry="8" fill="white" filter="url(#cardShadow)" />
+      <rect x="-35" y="-45" width="70" height="90" rx="4" ry="4" fill="url(#cardGradient1)" />
+      <use href="#star" x="-30" y="-30" width="60" height="60" />
+    </g>
+    
+    <!-- Card 2 (back side) -->
+    <g transform="translate(100, 0)" style="transform-origin: center; transform: rotateY(0deg);">
+      <rect x="-40" y="-50" width="80" height="100" rx="8" ry="8" fill="white" filter="url(#cardShadow)" />
+      <rect x="-35" y="-45" width="70" height="90" rx="4" ry="4" fill="url(#cardBackPattern)" />
+      <text x="0" y="0" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="white">?</text>
+      <animateTransform
+        attributeName="transform"
+        type="scale"
+        values="1;1.05;1"
+        dur="3s"
+        repeatCount="indefinite"
+      />
+    </g>
+    
+    <!-- Card 3 (matched pair) -->
+    <g transform="translate(200, 0)">
+      <rect x="-40" y="-50" width="80" height="100" rx="8" ry="8" fill="white" filter="url(#cardShadow)" />
+      <rect x="-35" y="-45" width="70" height="90" rx="4" ry="4" fill="url(#cardGradient2)" />
+      <use href="#circle" x="-30" y="-30" width="60" height="60" />
+      <rect x="-35" y="-45" width="70" height="90" rx="4" ry="4" fill="url(#matchedGradient)" opacity="0.3" />
+      <animateTransform
+        attributeName="transform"
+        type="scale"
+        values="1;1.05;1"
+        dur="2s"
+        repeatCount="indefinite"
+      />
+    </g>
+    
+    <!-- Card 4 (matched pair) -->
+    <g transform="translate(300, 0)">
+      <rect x="-40" y="-50" width="80" height="100" rx="8" ry="8" fill="white" filter="url(#cardShadow)" />
+      <rect x="-35" y="-45" width="70" height="90" rx="4" ry="4" fill="url(#cardGradient2)" />
+      <use href="#circle" x="-30" y="-30" width="60" height="60" />
+      <rect x="-35" y="-45" width="70" height="90" rx="4" ry="4" fill="url(#matchedGradient)" opacity="0.3" />
+      <animateTransform
+        attributeName="transform"
+        type="scale"
+        values="1;1.05;1"
+        dur="2s"
+        repeatCount="indefinite"
+        begin="0.5s"
+      />
+    </g>
+    
+    <!-- Second row -->
+    <!-- Card 5 (back side) -->
+    <g transform="translate(0, 120)">
+      <rect x="-40" y="-50" width="80" height="100" rx="8" ry="8" fill="white" filter="url(#cardShadow)" />
+      <rect x="-35" y="-45" width="70" height="90" rx="4" ry="4" fill="url(#cardBackPattern)" />
+      <text x="0" y="0" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="white">?</text>
+      <animateTransform
+        attributeName="transform"
+        type="scale"
+        values="1;1.05;1"
+        dur="3s"
+        repeatCount="indefinite"
+        begin="0.2s"
+      />
+    </g>
+    
+    <!-- Card 6 (flipping card animation) -->
+    <g transform="translate(100, 120)">
+      <rect x="-40" y="-50" width="80" height="100" rx="8" ry="8" fill="white" filter="url(#cardShadow)" />
+      <g>
+        <rect x="-35" y="-45" width="70" height="90" rx="4" ry="4" fill="url(#cardBackPattern)" />
+        <text x="0" y="0" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="white">?</text>
+        <animateTransform
+          attributeName="transform"
+          type="rotateY"
+          values="0;90;180;90;0"
+          dur="4s"
+          repeatCount="indefinite"
+          keyTimes="0;0.25;0.5;0.75;1"
+        />
+      </g>
+      <g>
+        <rect x="-35" y="-45" width="70" height="90" rx="4" ry="4" fill="url(#cardGradient3)" />
+        <use href="#heart" x="-30" y="-30" width="60" height="60" />
+        <animateTransform
+          attributeName="transform"
+          type="rotateY"
+          values="180;270;360;270;180"
+          dur="4s"
+          repeatCount="indefinite"
+          keyTimes="0;0.25;0.5;0.75;1"
+        />
+      </g>
+    </g>
+    
+    <!-- Card 7 (back side) -->
+    <g transform="translate(200, 120)">
+      <rect x="-40" y="-50" width="80" height="100" rx="8" ry="8" fill="white" filter="url(#cardShadow)" />
+      <rect x="-35" y="-45" width="70" height="90" rx="4" ry="4" fill="url(#cardBackPattern)" />
+      <text x="0" y="0" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="white">?</text>
+      <animateTransform
+        attributeName="transform"
+        type="scale"
+        values="1;1.05;1"
+        dur="3s"
+        repeatCount="indefinite"
+        begin="0.7s"
+      />
+    </g>
+    
+    <!-- Card 8 (flipped - showing front) -->
+    <g transform="translate(300, 120)">
+      <rect x="-40" y="-50" width="80" height="100" rx="8" ry="8" fill="white" filter="url(#cardShadow)" />
+      <rect x="-35" y="-45" width="70" height="90" rx="4" ry="4" fill="url(#cardGradient3)" />
+      <use href="#heart" x="-30" y="-30" width="60" height="60" />
+    </g>
+  </g>
+  
+  <!-- Game stats -->
+  <g transform="translate(190, 370)">
+    <rect x="-120" y="-40" width="240" height="80" rx="12" ry="12" fill="white" opacity="0.8" />
+    
+    <g transform="translate(-70, -15)">
+      <text x="0" y="0" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#64748b" text-anchor="middle">PAIRS</text>
+      <text x="0" y="25" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#10b981" text-anchor="middle">3/8</text>
+    </g>
+    
+    <g transform="translate(20, -15)">
+      <text x="0" y="0" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#64748b" text-anchor="middle">MOVES</text>
+      <text x="0" y="25" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#0f172a" text-anchor="middle">12</text>
+    </g>
+    
+    <g transform="translate(100, -15)">
+      <text x="0" y="0" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#64748b" text-anchor="middle">TIME</text>
+      <text x="0" y="25" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#f97316" text-anchor="middle">0:48</text>
+    </g>
+  </g>
+  
+  <!-- Game level -->
+  <g transform="translate(400, 370)">
+    <rect x="-40" y="-40" width="90" height="80" rx="12" ry="12" fill="white" opacity="0.8" />
+    <text x="5" y="-15" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#64748b" text-anchor="middle">LEVEL</text>
+    <text x="5" y="15" font-family="Arial, sans-serif" font-size="26" font-weight="bold" fill="#7e22ce" text-anchor="middle">2</text>
+  </g>
+  
+  <!-- Theme selector -->
+  <g transform="translate(400, 456)">
+    <rect x="-40" y="-30" width="90" height="60" rx="12" ry="12" fill="white" opacity="0.8" />
+    <text x="5" y="-10" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#64748b" text-anchor="middle">THEME</text>
+    <text x="5" y="15" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#0ea5e9" text-anchor="middle">ANIMALS</text>
+  </g>
+</svg> 

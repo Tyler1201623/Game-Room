@@ -1,0 +1,99 @@
+/* Theme Toggle Button Styles */
+.theme-toggle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 9999; /* Higher z-index to ensure it's always on top */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  outline: none;
+  position: relative; /* Position relative in the header, not fixed */
+}
+
+.theme-toggle:hover {
+  transform: translateY(-2px);
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+body.dark-mode .theme-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.theme-toggle:active {
+  transform: translateY(0);
+}
+
+.theme-toggle svg {
+  width: 24px;
+  height: 24px;
+  fill: var(--text-color, #333333);
+  transition: fill 0.3s ease;
+}
+
+body.dark-mode .theme-toggle {
+  background: transparent;
+}
+
+body.dark-mode .theme-toggle svg {
+  fill: var(--text-color-dark, #ffffff);
+}
+
+.dark-icon,
+.light-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s ease;
+}
+
+/* Accessibility */
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--primary-color, #7e22ce);
+  outline-offset: 2px;
+}
+
+/* Animation for icon switch */
+@keyframes iconFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes iconFadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.dark-icon,
+.light-icon {
+  animation: iconFadeIn 0.3s forwards;
+}
+
+.dark-icon.hide,
+.light-icon.hide {
+  animation: iconFadeOut 0.3s forwards;
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .theme-toggle,
+  .theme-toggle svg,
+  .dark-icon,
+  .light-icon {
+    transition: none;
+    animation: none;
+  }
+}

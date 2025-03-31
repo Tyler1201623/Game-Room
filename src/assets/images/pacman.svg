@@ -1,0 +1,242 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <!-- Definitions -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f1f5f9" />
+      <stop offset="100%" stop-color="#e2e8f0" />
+    </linearGradient>
+    
+    <linearGradient id="pacmanGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#facc15" />
+      <stop offset="100%" stop-color="#eab308" />
+    </linearGradient>
+    
+    <linearGradient id="ghostGradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ef4444" />
+      <stop offset="100%" stop-color="#dc2626" />
+    </linearGradient>
+    
+    <linearGradient id="ghostGradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6" />
+      <stop offset="100%" stop-color="#2563eb" />
+    </linearGradient>
+    
+    <linearGradient id="ghostGradient3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ec4899" />
+      <stop offset="100%" stop-color="#db2777" />
+    </linearGradient>
+    
+    <linearGradient id="ghostGradient4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f97316" />
+      <stop offset="100%" stop-color="#ea580c" />
+    </linearGradient>
+    
+    <linearGradient id="mazeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563eb" />
+      <stop offset="100%" stop-color="#1d4ed8" />
+    </linearGradient>
+    
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="8" />
+      <feOffset dx="0" dy="4" result="offsetblur" />
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.2" />
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+    
+    <clipPath id="roundedRect">
+      <rect x="16" y="16" width="480" height="480" rx="64" ry="64" />
+    </clipPath>
+    
+    <!-- Pacman Animation -->
+    <path id="pacman-mouth" d="M0 0 L60 40 L0 80 Z">
+      <animateTransform
+        attributeName="transform"
+        type="rotate"
+        from="0 0 40"
+        to="50 0 40"
+        dur="0.5s"
+        repeatCount="indefinite"
+        values="0 0 40; 50 0 40; 0 0 40"
+        keyTimes="0; 0.5; 1"
+      />
+    </path>
+  </defs>
+  
+  <!-- Background with rounded corners -->
+  <rect x="16" y="16" width="480" height="480" rx="64" ry="64" fill="url(#bgGradient)" filter="url(#shadow)" />
+  
+  <!-- Maze elements -->
+  <g clip-path="url(#roundedRect)" filter="url(#shadow)">
+    <!-- Corners -->
+    <path d="M86 86 Q86 116 116 116 L116 86 Z" fill="url(#mazeGradient)" />
+    <path d="M426 86 L426 116 Q396 116 396 86 Z" fill="url(#mazeGradient)" />
+    <path d="M86 426 L116 426 Q116 396 86 396 Z" fill="url(#mazeGradient)" />
+    <path d="M426 426 Q396 426 396 396 L426 396 Z" fill="url(#mazeGradient)" />
+    
+    <!-- Vertical blocks -->
+    <rect x="240" y="86" width="32" height="80" rx="6" ry="6" fill="url(#mazeGradient)" />
+    <rect x="240" y="346" width="32" height="80" rx="6" ry="6" fill="url(#mazeGradient)" />
+    
+    <!-- Horizontal blocks -->
+    <rect x="86" y="240" width="80" height="32" rx="6" ry="6" fill="url(#mazeGradient)" />
+    <rect x="346" y="240" width="80" height="32" rx="6" ry="6" fill="url(#mazeGradient)" />
+    
+    <!-- Center box -->
+    <rect x="196" y="196" width="120" height="120" rx="12" ry="12" fill="url(#mazeGradient)" />
+    <rect x="216" y="216" width="80" height="80" rx="8" ry="8" fill="black" />
+  </g>
+  
+  <!-- Dots -->
+  <g filter="url(#shadow)">
+    <!-- Regular dots -->
+    <circle cx="156" cy="116" r="6" fill="white" />
+    <circle cx="196" cy="116" r="6" fill="white" />
+    <circle cx="236" cy="116" r="6" fill="white" />
+    <circle cx="276" cy="116" r="6" fill="white" />
+    <circle cx="316" cy="116" r="6" fill="white" />
+    <circle cx="356" cy="116" r="6" fill="white" />
+    
+    <circle cx="156" cy="396" r="6" fill="white" />
+    <circle cx="196" cy="396" r="6" fill="white" />
+    <circle cx="236" cy="396" r="6" fill="white" />
+    <circle cx="276" cy="396" r="6" fill="white" />
+    <circle cx="316" cy="396" r="6" fill="white" />
+    <circle cx="356" cy="396" r="6" fill="white" />
+    
+    <circle cx="116" cy="156" r="6" fill="white" />
+    <circle cx="116" cy="196" r="6" fill="white" />
+    <circle cx="116" cy="236" r="6" fill="white" />
+    <circle cx="116" cy="276" r="6" fill="white" />
+    <circle cx="116" cy="316" r="6" fill="white" />
+    <circle cx="116" cy="356" r="6" fill="white" />
+    
+    <circle cx="396" cy="156" r="6" fill="white" />
+    <circle cx="396" cy="196" r="6" fill="white" />
+    <circle cx="396" cy="236" r="6" fill="white" />
+    <circle cx="396" cy="276" r="6" fill="white" />
+    <circle cx="396" cy="316" r="6" fill="white" />
+    <circle cx="396" cy="356" r="6" fill="white" />
+    
+    <!-- Power pellets (larger dots) -->
+    <circle cx="116" cy="116" r="12" fill="white">
+      <animate attributeName="opacity" values="1;0.5;1" dur="2s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="396" cy="116" r="12" fill="white">
+      <animate attributeName="opacity" values="1;0.5;1" dur="2s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="116" cy="396" r="12" fill="white">
+      <animate attributeName="opacity" values="1;0.5;1" dur="2s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="396" cy="396" r="12" fill="white">
+      <animate attributeName="opacity" values="1;0.5;1" dur="2s" repeatCount="indefinite" />
+    </circle>
+  </g>
+  
+  <!-- Pacman -->
+  <g transform="translate(156, 340)" filter="url(#shadow)">
+    <circle cx="0" cy="0" r="40" fill="url(#pacmanGradient)" />
+    <use href="#pacman-mouth" fill="black" />
+  </g>
+  
+  <!-- Ghosts -->
+  <!-- Red Ghost (Blinky) -->
+  <g transform="translate(350, 156)" filter="url(#shadow)">
+    <path d="M0 0 
+             C-20 0, -40 20, -40 40 
+             L-40 60 
+             C-40 70, -40 80, -40 80 
+             L-32 72 L-24 80 L-16 72 L-8 80 L0 72 L8 80 L16 72 L24 80 L32 72 L40 80 
+             C40 80, 40 70, 40 60 
+             L40 40 
+             C40 20, 20 0, 0 0 
+             Z" fill="url(#ghostGradient1)" />
+    
+    <!-- Eyes -->
+    <circle cx="-12" cy="30" r="12" fill="white" />
+    <circle cx="12" cy="30" r="12" fill="white" />
+    <circle cx="-12" cy="30" r="6" fill="black">
+      <animate attributeName="cx" values="-14;-10;-14" dur="3s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="12" cy="30" r="6" fill="black">
+      <animate attributeName="cx" values="10;14;10" dur="3s" repeatCount="indefinite" />
+    </circle>
+  </g>
+  
+  <!-- Blue Ghost (Inky) -->
+  <g transform="translate(256, 256)" filter="url(#shadow)">
+    <path d="M0 0 
+             C-20 0, -40 20, -40 40 
+             L-40 60 
+             C-40 70, -40 80, -40 80 
+             L-32 72 L-24 80 L-16 72 L-8 80 L0 72 L8 80 L16 72 L24 80 L32 72 L40 80 
+             C40 80, 40 70, 40 60 
+             L40 40 
+             C40 20, 20 0, 0 0 
+             Z" fill="url(#ghostGradient2)" />
+    
+    <!-- Eyes -->
+    <circle cx="-12" cy="30" r="12" fill="white" />
+    <circle cx="12" cy="30" r="12" fill="white" />
+    <circle cx="-12" cy="30" r="6" fill="black">
+      <animate attributeName="cy" values="28;32;28" dur="3s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="12" cy="30" r="6" fill="black">
+      <animate attributeName="cy" values="28;32;28" dur="3s" repeatCount="indefinite" />
+    </circle>
+  </g>
+  
+  <!-- Pink Ghost (Pinky) -->
+  <g transform="translate(156, 156)" filter="url(#shadow)">
+    <path d="M0 0 
+             C-20 0, -40 20, -40 40 
+             L-40 60 
+             C-40 70, -40 80, -40 80 
+             L-32 72 L-24 80 L-16 72 L-8 80 L0 72 L8 80 L16 72 L24 80 L32 72 L40 80 
+             C40 80, 40 70, 40 60 
+             L40 40 
+             C40 20, 20 0, 0 0 
+             Z" fill="url(#ghostGradient3)" />
+    
+    <!-- Eyes -->
+    <circle cx="-12" cy="30" r="12" fill="white" />
+    <circle cx="12" cy="30" r="12" fill="white" />
+    <circle cx="-12" cy="30" r="6" fill="black" />
+    <circle cx="12" cy="30" r="6" fill="black" />
+  </g>
+  
+  <!-- Orange Ghost (Clyde) -->
+  <g transform="translate(350, 350)" filter="url(#shadow)">
+    <path d="M0 0 
+             C-20 0, -40 20, -40 40 
+             L-40 60 
+             C-40 70, -40 80, -40 80 
+             L-32 72 L-24 80 L-16 72 L-8 80 L0 72 L8 80 L16 72 L24 80 L32 72 L40 80 
+             C40 80, 40 70, 40 60 
+             L40 40 
+             C40 20, 20 0, 0 0 
+             Z" fill="url(#ghostGradient4)" />
+    
+    <!-- Eyes -->
+    <circle cx="-12" cy="30" r="12" fill="white" />
+    <circle cx="12" cy="30" r="12" fill="white" />
+    <circle cx="-14" cy="30" r="6" fill="black" />
+    <circle cx="10" cy="30" r="6" fill="black" />
+  </g>
+  
+  <!-- Score -->
+  <g transform="translate(256, 460)">
+    <rect x="-80" y="-20" width="160" height="40" rx="10" ry="10" fill="white" opacity="0.8" />
+    <text x="0" y="8" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#0f172a" text-anchor="middle">SCORE: 4820</text>
+  </g>
+  
+  <!-- Logo -->
+  <g transform="translate(256, 50)">
+    <rect x="-110" y="-24" width="220" height="48" rx="12" ry="12" fill="white" opacity="0.9" />
+    <text x="0" y="12" font-family="Arial, sans-serif" font-size="30" font-weight="bold" text-anchor="middle" fill="#0f172a">PAC-MAN</text>
+  </g>
+</svg> 

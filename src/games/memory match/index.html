@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Train your memory with this beautiful card matching game featuring multiple difficulty levels"
+    />
+    <meta name="theme-color" content="#0f172a" />
+    <title>Memory Match - Game Room</title>
+    <link rel="stylesheet" href="../../css/games/memorymatch.css" />
+    <link rel="stylesheet" href="../../css/components/theme-toggle.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <a href="../../../index.html" class="home-button">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+      </svg>
+    </a>
+
+    <!-- Theme Toggle Button -->
+    <button
+      class="theme-toggle"
+      aria-label="Toggle dark/light theme"
+      title="Toggle theme"
+    >
+      <div class="dark-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path
+            d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.41 0-.39.39-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37c-.39-.39-1.03-.39-1.41 0-.39.39-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0 .39-.39.39-1.03 0-1.41l-1.06-1.06zm1.06-10.96c.39-.39.39-1.03 0-1.41-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06zM7.05 18.36c.39-.39.39-1.03 0-1.41-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06z"
+          />
+        </svg>
+      </div>
+      <div class="light-icon" style="display: none">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path
+            d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9zm0 16c-3.86 0-7-3.14-7-7s3.14-7 7-7 7 3.14 7 7-3.14 7-7 7z"
+          />
+          <path
+            d="M9 17h6c.55 0 1-.45 1-1s-.45-1-1-1H9c-.55 0-1 .45-1 1s.45 1 1 1z"
+          />
+        </svg>
+      </div>
+    </button>
+
+    <div class="game-container">
+      <div class="game-header">
+        <h1>Memory Match</h1>
+        <div class="game-info">
+          <div class="info-card level">
+            <span class="info-label">Level</span>
+            <span id="level" class="info-value">1</span>
+          </div>
+          <div class="info-card timer">
+            <span class="info-label">Time</span>
+            <span id="timer" class="info-value">00:00</span>
+          </div>
+          <div class="info-card moves">
+            <span class="info-label">Moves</span>
+            <span id="moves" class="info-value">0</span>
+          </div>
+        </div>
+      </div>
+
+      <div id="game-board" class="memory-board"></div>
+
+      <div class="controls">
+        <button id="startBtn" class="game-button primary">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M8 5v14l11-7z" />
+          </svg>
+          Start Game
+        </button>
+        <button id="themeBtn" class="game-button secondary">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path
+              d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9zm0 16c-3.86 0-7-3.14-7-7s3.14-7 7-7 7 3.14 7 7-3.14 7-7 7z"
+            />
+            <path
+              d="M12 17.5c2.33 0 4.08-1.66 4.71-3.5H7.29c.63 1.84 2.38 3.5 4.71 3.5z"
+            />
+          </svg>
+          Change Theme
+        </button>
+        <button
+          id="homeBtn"
+          class="game-button secondary"
+          onclick="window.location.href='../../../index.html'"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+          </svg>
+          Back to Home
+        </button>
+      </div>
+
+      <div class="theme-selection">
+        <button class="theme-option active" data-theme="animals">
+          Animals
+        </button>
+        <button class="theme-option" data-theme="space">Space</button>
+        <button class="theme-option" data-theme="nature">Nature</button>
+        <button class="theme-option" data-theme="food">Food</button>
+      </div>
+
+      <div class="instruction-section">
+        <h2>How to Play</h2>
+        <p>
+          Find all matching pairs of cards by turning them over two at a time.
+          Try to complete each level with the fewest moves and fastest time.
+        </p>
+        <ul>
+          <li>Click on a card to flip it</li>
+          <li>Find all matching pairs to complete the level</li>
+          <li>Complete all levels to win the game</li>
+          <li>Try different themes for a new challenge</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="game-message level-complete">
+      <div class="complete-message">
+        <h2>Level Complete!</h2>
+        <p>You found all matches!</p>
+        <div class="stat-item">
+          <span class="stat-label">Time:</span>
+          <span class="stat-value" id="complete-time">00:00</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">Moves:</span>
+          <span class="stat-value" id="complete-moves">0</span>
+        </div>
+        <button id="nextLevelBtn">Next Level</button>
+      </div>
+    </div>
+
+    <script src="../../js/theme.js"></script>
+    <script src="memory.js"></script>
+  </body>
+</html>

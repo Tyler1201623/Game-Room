@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Play Tic Tac Toe against an AI or with a friend in this modern version of the classic game"
+    />
+    <meta name="theme-color" content="#0f172a" />
+    <title>Tic Tac Toe - Game Room</title>
+    <link rel="stylesheet" href="../../css/games/tictactoe.css" />
+    <link rel="stylesheet" href="../../css/components/theme-toggle.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .board {
+        display: grid;
+        grid-template-columns: repeat(3, 100px);
+        gap: 5px;
+        margin: 20px auto;
+      }
+      .cell {
+        width: 100px;
+        height: 100px;
+        border: 2px solid #333;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 40px;
+        cursor: pointer;
+      }
+      .home-button {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        padding: 10px 20px;
+        background-color: #333;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        font-family: Arial, sans-serif;
+      }
+      .home-button:hover {
+        background-color: #555;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="../../../index.html" class="home-button">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+      </svg>
+    </a>
+
+    <!-- Theme Toggle Button -->
+    <button
+      class="theme-toggle"
+      aria-label="Toggle dark/light theme"
+      title="Toggle theme"
+    >
+      <div class="dark-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path
+            d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.41 0-.39.39-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37c-.39-.39-1.03-.39-1.41 0-.39.39-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0 .39-.39.39-1.03 0-1.41l-1.06-1.06zm1.06-10.96c.39-.39.39-1.03 0-1.41-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06zM7.05 18.36c.39-.39.39-1.03 0-1.41-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06z"
+          />
+        </svg>
+      </div>
+      <div class="light-icon" style="display: none">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path
+            d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9zm0 16c-3.86 0-7-3.14-7-7s3.14-7 7-7 7 3.14 7 7-3.14 7-7 7z"
+          />
+          <path
+            d="M9 17h6c.55 0 1-.45 1-1s-.45-1-1-1H9c-.55 0-1 .45-1 1s.45 1 1 1z"
+          />
+        </svg>
+      </div>
+    </button>
+
+    <div class="game-container">
+      <header class="game-header">
+        <h1>Tic Tac Toe</h1>
+        <div class="scoreboard">
+          <div class="score-item x-score">
+            <span class="player-label">X</span>
+            <span id="x-score" class="score-value">0</span>
+          </div>
+          <div class="score-item draw-score">
+            <span class="player-label">Ties</span>
+            <span id="ties" class="score-value">0</span>
+          </div>
+          <div class="score-item o-score">
+            <span class="player-label">O</span>
+            <span id="o-score" class="score-value">0</span>
+          </div>
+        </div>
+      </header>
+
+      <div class="game-settings">
+        <div class="setting-group">
+          <h3>Mode</h3>
+          <div class="setting-buttons">
+            <button class="mode-button" data-mode="ai">vs AI</button>
+            <button class="mode-button active" data-mode="two-player">
+              Two Player
+            </button>
+          </div>
+        </div>
+        <div class="setting-group">
+          <h3>AI Difficulty</h3>
+          <div class="setting-buttons">
+            <button class="difficulty-button" data-difficulty="easy">
+              Easy
+            </button>
+            <button class="difficulty-button active" data-difficulty="medium">
+              Medium
+            </button>
+            <button class="difficulty-button" data-difficulty="hard">
+              Hard
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div id="message" class="game-message">Player X's turn</div>
+
+      <div id="board" class="board">
+        <div class="cell" data-index="0"></div>
+        <div class="cell" data-index="1"></div>
+        <div class="cell" data-index="2"></div>
+        <div class="cell" data-index="3"></div>
+        <div class="cell" data-index="4"></div>
+        <div class="cell" data-index="5"></div>
+        <div class="cell" data-index="6"></div>
+        <div class="cell" data-index="7"></div>
+        <div class="cell" data-index="8"></div>
+      </div>
+
+      <div class="controls">
+        <button id="reset-button" class="game-button primary">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path
+              d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"
+            />
+          </svg>
+          Reset Game
+        </button>
+        <button
+          id="homeBtn"
+          class="game-button secondary"
+          onclick="window.location.href='../../../index.html'"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+          </svg>
+          Back to Home
+        </button>
+      </div>
+
+      <div class="ai-thinking">
+        <div class="thinking-spinner"></div>
+        <span>AI is thinking...</span>
+      </div>
+
+      <div class="instruction-section">
+        <h3>How to Play</h3>
+        <p>
+          Get three in a row to win! X goes first, then O. Click any square to
+          place your mark.
+        </p>
+        <p>In vs AI mode, you play as X and the computer plays as O.</p>
+      </div>
+    </div>
+
+    <script src="../../js/theme.js"></script>
+    <script src="tictactoe.js"></script>
+  </body>
+</html>

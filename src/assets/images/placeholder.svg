@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <!-- Background -->
+  <rect width="512" height="512" fill="#f1f5f9" rx="16" ry="16"/>
+  
+  <!-- Game Room Text -->
+  <text x="256" y="150" font-family="Arial, sans-serif" font-size="28" text-anchor="middle" fill="#7e22ce" font-weight="bold">GAME ROOM</text>
+  
+  <!-- Image placeholder icon -->
+  <rect x="128" y="180" width="256" height="180" rx="8" ry="8" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="4"/>
+  <path d="M192 230 L160 280 L224 280 Z" fill="#94a3b8"/>
+  <path d="M288 210 L240 280 L336 280 Z" fill="#94a3b8"/>
+  <circle cx="352" cy="210" r="16" fill="#94a3b8"/>
+  
+  <!-- Offline text -->
+  <text x="256" y="400" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" fill="#64748b">Image unavailable offline</text>
+</svg> 

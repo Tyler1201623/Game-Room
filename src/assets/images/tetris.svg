@@ -1,0 +1,148 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <!-- Background and definitions -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f1f5f9" />
+      <stop offset="100%" stop-color="#e2e8f0" />
+    </linearGradient>
+    
+    <!-- Tetromino colors -->
+    <linearGradient id="iBlockGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00E0FF" />
+      <stop offset="100%" stop-color="#00B8D4" />
+    </linearGradient>
+    
+    <linearGradient id="lBlockGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f97316" />
+      <stop offset="100%" stop-color="#ea580c" />
+    </linearGradient>
+    
+    <linearGradient id="oBlockGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#facc15" />
+      <stop offset="100%" stop-color="#eab308" />
+    </linearGradient>
+    
+    <linearGradient id="tBlockGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#a855f7" />
+      <stop offset="100%" stop-color="#9333ea" />
+    </linearGradient>
+    
+    <linearGradient id="zBlockGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ef4444" />
+      <stop offset="100%" stop-color="#dc2626" />
+    </linearGradient>
+    
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="8" />
+      <feOffset dx="0" dy="4" result="offsetblur" />
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.2" />
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+    
+    <filter id="blockInnerShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="2" />
+      <feOffset dx="-2" dy="2" result="offsetblur" />
+      <feComposite in="SourceGraphic" in2="offsetblur" operator="over" />
+    </filter>
+    
+    <clipPath id="roundedRect">
+      <rect x="16" y="16" width="480" height="480" rx="64" ry="64" />
+    </clipPath>
+  </defs>
+
+  <!-- Background with rounded corners -->
+  <rect x="16" y="16" width="480" height="480" rx="64" ry="64" fill="url(#bgGradient)" filter="url(#shadow)" />
+  
+  <!-- Grid pattern (subtle) -->
+  <g clip-path="url(#roundedRect)" opacity="0.05">
+    <rect x="16" y="16" width="480" height="480" fill="#64748b" />
+    <path d="M80 16 L80 496" stroke="white" stroke-width="1" />
+    <path d="M144 16 L144 496" stroke="white" stroke-width="1" />
+    <path d="M208 16 L208 496" stroke="white" stroke-width="1" />
+    <path d="M272 16 L272 496" stroke="white" stroke-width="1" />
+    <path d="M336 16 L336 496" stroke="white" stroke-width="1" />
+    <path d="M400 16 L400 496" stroke="white" stroke-width="1" />
+    <path d="M464 16 L464 496" stroke="white" stroke-width="1" />
+    
+    <path d="M16 80 L496 80" stroke="white" stroke-width="1" />
+    <path d="M16 144 L496 144" stroke="white" stroke-width="1" />
+    <path d="M16 208 L496 208" stroke="white" stroke-width="1" />
+    <path d="M16 272 L496 272" stroke="white" stroke-width="1" />
+    <path d="M16 336 L496 336" stroke="white" stroke-width="1" />
+    <path d="M16 400 L496 400" stroke="white" stroke-width="1" />
+    <path d="M16 464 L496 464" stroke="white" stroke-width="1" />
+  </g>
+
+  <!-- Tetris Blocks -->
+  <g filter="url(#shadow)">
+    <!-- I Block (Straight) -->
+    <g transform="translate(80, 80)">
+      <rect x="0" y="0" width="48" height="48" rx="6" ry="6" fill="url(#iBlockGradient)" filter="url(#blockInnerShadow)" />
+      <rect x="48" y="0" width="48" height="48" rx="6" ry="6" fill="url(#iBlockGradient)" filter="url(#blockInnerShadow)" />
+      <rect x="96" y="0" width="48" height="48" rx="6" ry="6" fill="url(#iBlockGradient)" filter="url(#blockInnerShadow)" />
+      <rect x="144" y="0" width="48" height="48" rx="6" ry="6" fill="url(#iBlockGradient)" filter="url(#blockInnerShadow)" />
+    </g>
+    
+    <!-- L Block -->
+    <g transform="translate(352, 80)">
+      <rect x="0" y="0" width="48" height="48" rx="6" ry="6" fill="url(#lBlockGradient)" filter="url(#blockInnerShadow)" />
+      <rect x="0" y="48" width="48" height="48" rx="6" ry="6" fill="url(#lBlockGradient)" filter="url(#blockInnerShadow)" />
+      <rect x="0" y="96" width="48" height="48" rx="6" ry="6" fill="url(#lBlockGradient)" filter="url(#blockInnerShadow)" />
+      <rect x="48" y="96" width="48" height="48" rx="6" ry="6" fill="url(#lBlockGradient)" filter="url(#blockInnerShadow)" />
+    </g>
+    
+    <!-- O Block (Square) -->
+    <g transform="translate(102, 224)">
+      <rect x="0" y="0" width="48" height="48" rx="6" ry="6" fill="url(#oBlockGradient)" filter="url(#blockInnerShadow)" />
+      <rect x="48" y="0" width="48" height="48" rx="6" ry="6" fill="url(#oBlockGradient)" filter="url(#blockInnerShadow)" />
+      <rect x="0" y="48" width="48" height="48" rx="6" ry="6" fill="url(#oBlockGradient)" filter="url(#blockInnerShadow)" />
+      <rect x="48" y="48" width="48" height="48" rx="6" ry="6" fill="url(#oBlockGradient)" filter="url(#blockInnerShadow)" />
+    </g>
+    
+    <!-- T Block -->
+    <g transform="translate(224, 224)">
+      <rect x="0" y="0" width="48" height="48" rx="6" ry="6" fill="url(#tBlockGradient)" filter="url(#blockInnerShadow)" />
+      <rect x="48" y="0" width="48" height="48" rx="6" ry="6" fill="url(#tBlockGradient)" filter="url(#blockInnerShadow)" />
+      <rect x="96" y="0" width="48" height="48" rx="6" ry="6" fill="url(#tBlockGradient)" filter="url(#blockInnerShadow)" />
+      <rect x="48" y="48" width="48" height="48" rx="6" ry="6" fill="url(#tBlockGradient)" filter="url(#blockInnerShadow)" />
+    </g>
+    
+    <!-- Z Block -->
+    <g transform="translate(96, 368)">
+      <rect x="0" y="0" width="48" height="48" rx="6" ry="6" fill="url(#zBlockGradient)" filter="url(#blockInnerShadow)" />
+      <rect x="48" y="0" width="48" height="48" rx="6" ry="6" fill="url(#zBlockGradient)" filter="url(#blockInnerShadow)" />
+      <rect x="48" y="48" width="48" height="48" rx="6" ry="6" fill="url(#zBlockGradient)" filter="url(#blockInnerShadow)" />
+      <rect x="96" y="48" width="48" height="48" rx="6" ry="6" fill="url(#zBlockGradient)" filter="url(#blockInnerShadow)" />
+    </g>
+  </g>
+  
+  <!-- Score Panel -->
+  <g transform="translate(290, 368)">
+    <rect x="0" y="0" width="160" height="64" rx="16" ry="16" fill="white" opacity="0.8" />
+    <text x="80" y="24" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#0f172a" text-anchor="middle">SCORE</text>
+    <text x="80" y="48" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#7e22ce" text-anchor="middle">12840</text>
+  </g>
+  
+  <!-- Tetris Logo -->
+  <g transform="translate(112, 20)">
+    <rect x="0" y="0" width="288" height="48" rx="12" ry="12" fill="white" opacity="0.9" />
+    <text x="144" y="34" font-family="Arial, sans-serif" font-size="30" font-weight="bold" text-anchor="middle" fill="#0f172a">TETRIS</text>
+  </g>
+  
+  <!-- Next Block Preview -->
+  <g transform="translate(360, 158)">
+    <rect x="0" y="0" width="84" height="84" rx="12" ry="12" fill="white" opacity="0.6" />
+    <text x="42" y="20" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#64748b" text-anchor="middle">NEXT</text>
+    
+    <!-- Next Block (J Block) -->
+    <rect x="30" y="28" width="24" height="24" rx="4" ry="4" fill="#0000f0" />
+    <rect x="30" y="52" width="24" height="24" rx="4" ry="4" fill="#0000f0" />
+    <rect x="30" y="76" width="24" height="24" rx="4" ry="4" fill="#0000f0" />
+    <rect x="6" y="76" width="24" height="24" rx="4" ry="4" fill="#0000f0" />
+  </g>
+</svg> 
