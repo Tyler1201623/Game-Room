@@ -26,7 +26,7 @@ class PWAInstallManager {
 
     // Before install prompt
     window.addEventListener("beforeinstallprompt", (e) => {
-      // Prevent Chrome 67 and earlier from automatically showing the prompt
+      // Prevent automatic showing, but save event for later use
       e.preventDefault();
 
       console.log("Installation prompt detected and saved");
@@ -37,8 +37,13 @@ class PWAInstallManager {
       // Reset prompt shown flag
       this.promptShown = false;
 
-      // Show the install buttons
+      // Show the install buttons immediately
       this.showInstallButtons();
+
+      // Make sure we don't prevent showing the prompt when needed
+      e.userChoice.then((choiceResult) => {
+        console.log("User installation choice:", choiceResult.outcome);
+      });
     });
 
     // When the app is successfully installed
@@ -132,11 +137,14 @@ class PWAInstallManager {
       console.log("Showing installation prompt");
 
       try {
-        // Show the installation prompt
-        this.deferredPrompt.prompt();
+        // Ensure prompt is shown and not just prevented
+        const promptEvent = this.deferredPrompt;
+
+        // Force display of installation UI
+        promptEvent.prompt();
 
         // Wait for the user to respond to the prompt
-        this.deferredPrompt.userChoice
+        promptEvent.userChoice
           .then((choiceResult) => {
             console.log("User choice result:", choiceResult.outcome);
 

@@ -395,7 +395,12 @@
       // Force display: block to ensure body is visible
       document.body.style.visibility = "visible";
 
-      // Register service worker
+      // Force any floating UI elements to be removed
+      document.querySelectorAll(".floating-install-btn").forEach((btn) => {
+        if (btn) btn.style.display = "none";
+      });
+
+      // Register service worker with correct path
       if ("serviceWorker" in navigator) {
         window.addEventListener("load", () => {
           navigator.serviceWorker
@@ -406,6 +411,11 @@
             );
         });
       }
+
+      // Fix beforeinstallprompt event handling
+      window.addEventListener("beforeinstallprompt", (e) => {
+        console.log("Installation prompt captured at document level");
+      });
     </script>
 
     <!-- Hide preloader directly -->
