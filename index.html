@@ -408,14 +408,19 @@
       }
     </script>
 
-    <!-- Hide preloader -->
+    <!-- Hide preloader directly -->
     <script>
-      // Hide preloader
+      // Hide preloader immediately
+      document.querySelector(".preloader").style.display = "none";
+
+      // Backup in case DOM isn't ready
+      document.addEventListener("DOMContentLoaded", function () {
+        document.querySelector(".preloader").style.display = "none";
+      });
+
+      // Additional backup
       window.addEventListener("load", function () {
-        document.querySelector(".preloader").style.opacity = "0";
-        setTimeout(() => {
-          document.querySelector(".preloader").style.display = "none";
-        }, 500);
+        document.querySelector(".preloader").style.display = "none";
       });
     </script>
   </body>
