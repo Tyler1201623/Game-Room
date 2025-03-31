@@ -3,47 +3,47 @@
  * Provides offline functionality and caching
  */
 const CACHE_NAME = "game-room-cache-v5";
-const OFFLINE_URL = "/offline.html";
+const OFFLINE_URL = "./offline.html";
 
 // Assets to pre-cache
 const preCacheAssets = [
-  "/",
-  "/index.html",
-  "/offline.html",
-  "/manifest.json",
-  "/src/css/style.css",
-  "/src/css/games/snake.css",
-  "/src/css/games/tetris.css",
-  "/src/css/games/tictactoe.css",
-  "/src/css/games/memory.css",
-  "/src/css/games/pacman.css",
-  "/src/css/games/space.css",
-  "/src/css/components/theme-toggle.css",
-  "/src/css/components/pwa-install.css",
-  "/src/js/main.js",
-  "/src/js/gameLoader.js",
-  "/src/js/theme.js",
-  "/src/js/pwa-install.js",
-  "/src/components/theme-toggle.html",
-  "/src/assets/images/snake.svg",
-  "/src/assets/images/tetris.svg",
-  "/src/assets/images/tictactoe.svg",
-  "/src/assets/images/pacman.svg",
-  "/src/assets/images/memory.svg",
-  "/src/assets/images/spaceinvaders.svg",
-  "/src/assets/images/placeholder.svg",
-  "/src/games/snake/index.html",
-  "/src/games/snake/snake.js",
-  "/src/games/tetris/index.html",
-  "/src/games/tetris/tetris.js",
-  "/src/games/tictactoe/index.html",
-  "/src/games/tictactoe/tictactoe.js",
-  "/src/games/pac-man/index.html",
-  "/src/games/pac-man/pac.js",
-  "/src/games/memory match/index.html",
-  "/src/games/memory match/memory.js",
-  "/src/games/space invaders/index.html",
-  "/src/games/space invaders/space.js",
+  "./",
+  "./index.html",
+  "./offline.html",
+  "./manifest.json",
+  "./src/css/style.css",
+  "./src/css/games/snake.css",
+  "./src/css/games/tetris.css",
+  "./src/css/games/tictactoe.css",
+  "./src/css/games/memory.css",
+  "./src/css/games/pacman.css",
+  "./src/css/games/space.css",
+  "./src/css/components/theme-toggle.css",
+  "./src/css/components/pwa-install.css",
+  "./src/js/main.js",
+  "./src/js/gameLoader.js",
+  "./src/js/theme.js",
+  "./src/js/pwa-install.js",
+  "./src/components/theme-toggle.html",
+  "./src/assets/images/snake.svg",
+  "./src/assets/images/tetris.svg",
+  "./src/assets/images/tictactoe.svg",
+  "./src/assets/images/pacman.svg",
+  "./src/assets/images/memory.svg",
+  "./src/assets/images/spaceinvaders.svg",
+  "./src/assets/images/placeholder.svg",
+  "./src/games/snake/index.html",
+  "./src/games/snake/snake.js",
+  "./src/games/tetris/index.html",
+  "./src/games/tetris/tetris.js",
+  "./src/games/tictactoe/index.html",
+  "./src/games/tictactoe/tictactoe.js",
+  "./src/games/pac-man/index.html",
+  "./src/games/pac-man/pac.js",
+  "./src/games/memory match/index.html",
+  "./src/games/memory match/memory.js",
+  "./src/games/space invaders/index.html",
+  "./src/games/space invaders/space.js",
   // Font Awesome (for icons)
   "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css",
   // Google Fonts
@@ -190,12 +190,12 @@ self.addEventListener("fetch", (event) => {
               event.request.headers.get("Accept") &&
               event.request.headers.get("Accept").includes("text/html")
             ) {
-              return caches.match("/offline.html");
+              return caches.match("./offline.html");
             }
 
             // For images, try to return a placeholder image
             if (event.request.url.match(/\.(jpg|jpeg|png|gif|svg)$/)) {
-              return caches.match("/src/assets/images/placeholder.svg");
+              return caches.match("./src/assets/images/placeholder.svg");
             }
 
             // For other resources, return a default error response

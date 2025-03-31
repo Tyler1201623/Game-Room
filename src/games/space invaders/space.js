@@ -255,37 +255,57 @@ class SpaceInvaders {
   }
 
   handleKeyDown(e) {
-    if (e.key === "ArrowLeft" || e.key === "a") {
-      this.player.movingLeft = true;
-      e.preventDefault();
-    }
-    if (e.key === "ArrowRight" || e.key === "d") {
-      this.player.movingRight = true;
-      e.preventDefault();
-    }
-    if (e.key === " " || e.key === "ArrowUp") {
-      this.player.isFiring = true;
-      e.preventDefault();
-    }
-    if (e.key === "p") {
-      this.togglePause();
-      e.preventDefault();
-    }
-    if (e.key === "Enter" && !this.gameRunning) {
-      this.start();
-      e.preventDefault();
+    if (this.gameOver) return;
+    if (!this.gameRunning) return;
+
+    switch (e.code) {
+      case "ArrowLeft":
+      case "KeyA":
+        this.player.movingLeft = true;
+        e.preventDefault();
+        break;
+      case "ArrowRight":
+      case "KeyD":
+        this.player.movingRight = true;
+        e.preventDefault();
+        break;
+      case "Space":
+      case "KeyW":
+      case "ArrowUp":
+        if (!this.player.isFiring) {
+          this.player.isFiring = true;
+          this.tryToFire();
+        }
+        e.preventDefault();
+        break;
+      case "KeyP":
+        this.togglePause();
+        e.preventDefault();
+        break;
     }
   }
 
   handleKeyUp(e) {
-    if (e.key === "ArrowLeft" || e.key === "a") {
-      this.player.movingLeft = false;
-    }
-    if (e.key === "ArrowRight" || e.key === "d") {
-      this.player.movingRight = false;
-    }
-    if (e.key === " " || e.key === "ArrowUp") {
-      this.player.isFiring = false;
+    if (this.gameOver) return;
+    if (!this.gameRunning) return;
+
+    switch (e.code) {
+      case "ArrowLeft":
+      case "KeyA":
+        this.player.movingLeft = false;
+        e.preventDefault();
+        break;
+      case "ArrowRight":
+      case "KeyD":
+        this.player.movingRight = false;
+        e.preventDefault();
+        break;
+      case "Space":
+      case "KeyW":
+      case "ArrowUp":
+        this.player.isFiring = false;
+        e.preventDefault();
+        break;
     }
   }
 

@@ -8,7 +8,7 @@
   "theme_color": "#7e22ce",
   "orientation": "portrait-primary",
   "scope": "./",
-  "id": "/index.html",
+  "id": "/Game-Room/index.html",
   "icons": [
     {
       "src": "src/assets/images/pacman.svg",

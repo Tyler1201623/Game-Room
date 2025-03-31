@@ -105,7 +105,7 @@ class PWAInstallManager {
     if ("serviceWorker" in navigator) {
       console.log("Registering service worker");
       navigator.serviceWorker
-        .register("/service-worker.js")
+        .register("./service-worker.js")
         .then((registration) => {
           console.log(
             "Service Worker registered with scope:",
